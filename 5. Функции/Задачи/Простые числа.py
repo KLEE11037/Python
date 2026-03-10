@@ -1,11 +1,15 @@
+def is_simple(number):
+    for i in range(2, number):
+        if number % i == 0:
+            return False
+    return True
+
 n = int(input())
-count = 0
 num = 2
+count = 0
 
-while count < n:
-    for i in range(2, n):
-        if not n%i==0:
-            print(num)
-            num+=1
-            break
-
+while count != n:
+    if is_simple(num):
+        print(num)
+        count+=1
+    num+=1
