@@ -10,9 +10,7 @@ while n != 0:
         count += 1
     elif n != old_n:
         if count > max_count:
-
-
-
+            pass
     old_n = n
     n = int(input())
 
