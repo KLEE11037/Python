@@ -14,7 +14,7 @@ TASKS = [
         name="Расстояние между точками",
         filename="Задание 101.py",
         time_limit=5.0,
-        memory_limit_bytes=64 * 1024 * 1024,
+        memory_limit_bytes=128 * 1024 * 1024,
         forbidden_constructs=[],
         check_pep8=True,
         validator=float_close(tolerance=1e-2),

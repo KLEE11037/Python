@@ -1,8 +1,8 @@
 from math import sqrt
 
-a = int(input())
-b = int(input())
-c = int(input())
-d = int(input())
+a = float(input())
+b = float(input())
+c = float(input())
+d = float(input())
 
-print(sqrt((a - b)**2 + (c-d)**2))
+print(sqrt((a - b) ** 2 + (c - d) ** 2))

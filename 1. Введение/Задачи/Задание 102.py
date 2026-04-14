@@ -11,5 +11,4 @@ b = sqrt((x3 - x2)**2 + (y3-y2)**2)
 c = sqrt((x1 - x3)**2 + (y1-y3)**2)
 p = (a+b+c)/2
 
-print("Площадь =",sqrt(p*(p-a)*(p-b)*(p-c)))
-print("Периметр =", p*2)
+print(sqrt(p*(p-a)*(p-b)*(p-c)), p*2)
