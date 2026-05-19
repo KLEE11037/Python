@@ -1,19 +1,30 @@
-def findarmstrong_numbers():
-    for num in range(1, 100000000):
-        N = 0
-        temp = num
-        while temp > 0:
-            N += 1
-            temp //=10
+def is_armstrong(num):
+    total = 0
+    l = 0
+    temp = num
+    while num>0:
+        l += 1
+        num//=10
 
-        temp = num
-        total = 0
-        while temp > 0:
-            digit = temp%10
-            total += digit ** N
-            temp //= 10
+    num = temp
+    while temp>0:
+        c = temp%10
+        temp //= 10
+        total += c**l
 
-        if total == num:
+    return total == num
+
+a, b = map(int,input().split())
+
+for n in range(a,b):
+    if is_armstrong(n):
+        print(n)
+
+
+
+
+
+
 
 
 
