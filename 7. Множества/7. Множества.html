@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Множества</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/prism.css">
+    <script src="https://kit.fontawesome.com/b8991598f2.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h1><span class="emoji">📝</span>7. Множества</h1>
+        <p>Теоретический материал</p>
+    </header>
+
+    <nav class="nav">
+        <ul>
+            <li><a href="#создание">🔹 Создание и свойства</a></li>
+            <li><a href="#изменение">🔹 Добавление и удаление</a></li>
+            <li><a href="#операции">🔹 Операции над множествами</a></li>
+            <li><a href="#методы">🔹 Методы и проверки</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <!-- СОЗДАНИЕ И СВОЙСТВА -->
+        <section id="создание" class="section">
+            <h2>Создание и свойства</h2>
+            <p><strong>Множество (set)</strong> — это неупорядоченная коллекция уникальных элементов. Основные характеристики:</p>
+            <ul>
+                <li><strong>Уникальность:</strong> Множество не может содержать дубликатов.</li>
+                <li><strong>Неупорядоченность:</strong> Элементы не имеют индексов, порядок хранения не гарантируется.</li>
+                <li><strong>Изменяемость:</strong> Можно добавлять и удалять элементы (но сами элементы должны быть неизменяемыми, например числами, строками или кортежами).</li>
+            </ul>
+
+            <div class="important">
+                <p>В отличие от списков, к элементу множества невозможно обратиться через индекс <code>[]</code>.</p>
+            </div>
+
+            <h3>Создание множества</h3>
+            
+            <p>Создание пустого множества:</p>
+            <div class="pre-code">
+                <pre class="line-numbers match-braces"><code class="language-python"># Важно: {} создаст пустой словарь, а не множество!
+my_set = set()</code></pre>
+            </div>
+
+            <p>Создание множества с элементами:</p>
+            <div class="pre-code">
+                <pre class="line-numbers match-braces"><code class="language-python"># Используя фигурные скобки
+numbers = {1, 2, 3, 4, 5}
+
+# Из другой коллекции (например, списка)
+# Дубликаты будут автоматически удалены
+lst = [1, 2, 2, 3, 3, 3]
+unique_numbers = set(lst) 
+print(unique_numbers) # {1, 2, 3}</code></pre>
+            </div>
+        </section>
+
+        <!-- ДОБАВЛЕНИЕ И УДАЛЕНИЕ -->
+        <section id="изменение" class="section">
+            <h2>Добавление и удаление элементов</h2>
+
+            <div class="function-block">
+                <div class="function-signature">add(элемент)</div>
+                <div class="function-description">Добавляет элемент во множество. Если элемент уже есть, ничего не происходит.</div>
+            </div>
+            <div class="pre-code">
+                <pre class="line-numbers match-braces"><code class="language-python">s = {1, 2}
+s.add(3)
+print(s) # {1, 2, 3}</code></pre>
+            </div>
+
+            <div class="function-block">
+                <div class="function-signature">remove(элемент)</div>
+                <div class="function-description">Удаляет элемент из множества. <br>
+                <span class="highlight-math">!</span> Генерирует ошибку <code>KeyError</code>, если элемента нет.</div>
+            </div>
+
+            <div class="function-block">
+                <div class="function-signature">discard(элемент)</div>
+                <div class="function-description">Удаляет элемент из множества, если он присутствует. <br>
+                Не генерирует ошибку, если элемента нет.</div>
+            </div>
+            
+            <div class="pre-code">
+                <pre class="line-numbers match-braces"><code class="language-python">s = {1, 2, 3}
+s.remove(2)   # OK
+s.discard(3)  # OK
+s.discard(10) # Ничего не произойдет (ошибки нет)
+# s.remove(10) # ОШИБКА KeyError</code></pre>
+            </div>
+
+            <div class="function-block">
+                <div class="function-signature">pop()</div>
+                <div class="function-description">Удаляет и возвращает случайный элемент из множества. Если множество пусто, вызывает ошибку.</div>
+            </div>
+
+            <div class="function-block">
+                <div class="function-signature">clear()</div>
+                <div class="function-description">Удаляет все элементы из множества.</div>
+            </div>
+        </section>
+
+        <!-- ОПЕРАЦИИ -->
+        <section id="операции" class="section">
+            <h2>Операции над множествами</h2>
+            <p>Python поддерживает математические операции над множествами.</p>
+
+            <div class="function-block">
+                <div class="function-signature">union(other) или |</div>
+                <div class="function-description"><strong>Объединение:</strong> Возвращает множество, содержащее все элементы обоих множеств.</div>
+            </div>
+            <div class="pre-code">
+                <pre class="line-numbers match-braces"><code class="language-python">a = {1, 2, 3}
+b = {3, 4, 5}
+c = a.union(b) # или a | b
+print(c) # {1, 2, 3, 4, 5}</code></pre>
+            </div>
+
+            <div class="function-block">
+                <div class="function-signature">intersection(other) или &</div>
+                <div class="function-description"><strong>Пересечение:</strong> Возвращает множество, содержащее только общие элементы.</div>
+            </div>
+            <div class="pre-code">
+                <pre class="line-numbers match-braces"><code class="language-python">a = {1, 2, 3}
+b = {3, 4, 5}
+c = a.intersection(b) # или a & b
+print(c) # {3}</code></pre>
+            </div>
+
+            <div class="function-block">
+                <div class="function-signature">difference(other) или -</div>
+                <div class="function-description"><strong>Разность:</strong> Возвращает множество элементов, которые есть в первом множестве, но нет во втором.</div>
+            </div>
+            <div class="pre-code">
+                <pre class="line-numbers match-braces"><code class="language-python">a = {1, 2, 3}
+b = {3, 4, 5}
+c = a.difference(b) # или a - b
+print(c) # {1, 2} (убрали 3, так как она есть в b)</code></pre>
+            </div>
+
+            <div class="function-block">
+                <div class="function-signature">symmetric_difference(other) или ^</div>
+                <div class="function-description"><strong>Симметрическая разность:</strong> Возвращает элементы, которые есть в первом или во втором множестве, но не в обоих сразу.</div>
+            </div>
+            <div class="pre-code">
+                <pre class="line-numbers match-braces"><code class="language-python">a = {1, 2, 3}
+b = {3, 4, 5}
+c = a.symmetric_difference(b) # или a ^ b
+print(c) # {1, 2, 4, 5}</code></pre>
+            </div>
+        </section>
+
+        <!-- МЕТОДЫ И ПРОВЕРКИ -->
+        <section id="методы" class="section">
+            <h2>Методы и проверки</h2>
+
+            <div class="function-block">
+                <div class="function-signature">issubset(other) или <=</div>
+                <div class="function-description">Возвращает <code>True</code>, если все элементы текущего множества входят в <code>other</code> (является подмножеством).</div>
+            </div>
+            <div class="pre-code">
+                <pre class="line-numbers match-braces"><code class="language-python">a = {1, 2}
+b = {1, 2, 3}
+print(a.issubset(b)) # True
+print(b.issubset(a)) # False</code></pre>
+            </div>
+
+            <div class="function-block">
+                <div class="function-signature">issuperset(other) или >=</div>
+                <div class="function-description">Возвращает <code>True</code>, если текущее множество содержит все элементы <code>other</code> (является надмножеством).</div>
+            </div>
+
+            <div class="function-block">
+                <div class="function-signature">copy()</div>
+                <div class="function-description">Создает поверхностную копию множества.</div>
+            </div>
+
+            <div class="function-block">
+                <div class="function-signature">len(s), min(s), max(s), sum(s)</div>
+                <div class="function-description">Стандартные функции работают и с множествами.</div>
+            </div>
+        </section>
+
+    </main>
+</div>
+<script src="../assets/js/prism.js"></script>
+<script src="../assets/js/script.js"></script>
+</body>
+</html>
